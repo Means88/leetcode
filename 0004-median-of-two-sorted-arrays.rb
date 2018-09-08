@@ -40,27 +40,27 @@ end
 # @param {Integer[]} nums2
 # @return {Float}
 def find_median_sorted_arrays(nums1, nums2)
-    return nums2.median if nums1.length == 0
-    return nums1.median if nums2.length == 0
-    return [nums1[0], nums2[0]].mean if nums1.length == 1 && nums2.length == 1
+  return nums2.median if nums1.length == 0
+  return nums1.median if nums2.length == 0
+  return [nums1[0], nums2[0]].mean if nums1.length == 1 && nums2.length == 1
 
-    nums = [0, nums1, nums2]
-    if nums[1].ml < nums[2].ml
-      x = 1
-    else
-      x = 2
-    end
-    if nums[1].mr > nums[2].mr
-      y = 1
-    else
-      y = 2
-    end
-    return nums[x].ml if nums[x].ml == nums[y].mr
+  nums = [0, nums1, nums2]
+  if nums[1].ml < nums[2].ml
+    x = 1
+  else
+    x = 2
+  end
+  if nums[1].mr > nums[2].mr
+    y = 1
+  else
+    y = 2
+  end
+  return nums[x].ml if nums[x].ml == nums[y].mr
 
-    l1 = [nums[x].iml, 1].max
-    l2 = [nums[y].length - 1 - nums[y].imr, 1].max
-    l = [l1, l2].min
-    nums[x] = nums[x][l, nums[x].length - l]
-    nums[y] = nums[y][0, nums[y].length - l]
-    return find_median_sorted_arrays(nums[1], nums[2])
+  l1 = [nums[x].iml, 1].max
+  l2 = [nums[y].length - 1 - nums[y].imr, 1].max
+  l = [l1, l2].min
+  nums[x] = nums[x][l, nums[x].length - l]
+  nums[y] = nums[y][0, nums[y].length - l]
+  return find_median_sorted_arrays(nums[1], nums[2])
 end
