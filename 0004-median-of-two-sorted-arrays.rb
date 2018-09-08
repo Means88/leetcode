@@ -60,12 +60,7 @@ def find_median_sorted_arrays(nums1, nums2)
     l1 = [nums[x].iml, 1].max
     l2 = [nums[y].length - 1 - nums[y].imr, 1].max
     l = [l1, l2].min
-    if x == y
-        nums[x] = nums[x][l, nums[x].length - l]
-        nums[x] = nums[x][0, nums[x].length - l]
-    else
-        nums[x] = nums[x][l, nums[x].length - l]
-        nums[y] = nums[y][0, nums[y].length - l]
-    end
+    nums[x] = nums[x][l, nums[x].length - l]
+    nums[y] = nums[y][0, nums[y].length - l]
     return find_median_sorted_arrays(nums[1], nums[2])
 end
